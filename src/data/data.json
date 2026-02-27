@@ -1,0 +1,61 @@
+{
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Kittanate Thanee",
+    "roles": ["Jr. Programmer at Longbee Packaging", "Web Development & System Integration", "IoT & Embedded Systems", "Automation & AI Enthusiast"],
+    "resumeUrl": "/Resume_Kittanate.pdf"
+  },
+  "about": {
+    "bio": "A passionate Full Stack Developer with hands-on experience in C#, SQL Server, Next.js, and IoT systems. I enjoy building tools that bridge the physical and digital world — from factory MES dashboards to smart farm sensors.",
+    "skills": ["C#", "SQL Server", "Next.js", "TypeScript", "ESP32 / IoT", "N8N", "Firebase" ,"Arduino", "AI Integration" ,"C++" ,"Python"]
+  },
+  "experience": [
+    {
+      "id": "exp1",
+      "type": "work",
+      "title": "Programmer",
+      "organization": "LONGBEE PACKAGING CO., LTD.",
+      "period": "2025 – Present",
+      "description": "Developed MES real-time dashboards, automated reporting pipelines"
+    },
+    {
+      "id": "exp2",
+      "type": "education",
+      "title": "Bachelor of Engineering",
+      "organization": "Kasetsart University Sriracha Campus",
+      "period": "2019 – 2023",
+      "description": "Major in Computer Engineering and Informatics. Focused on embedded systems and software development."
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj1",
+      "title": "Smart Farm IoT",
+      "description": "Real-time soil moisture and climate monitoring system using ESP32 sensors with Firebase as the backend and a live dashboard.",
+      "tags": ["ESP32", "Firebase", "IoT", "Next.js"],
+      "githubUrl": "#",
+      "liveUrl": "#"
+    },
+    {
+      "id": "proj2",
+      "title": "MES Real-time Dashboard",
+      "description": "Manufacturing Execution System dashboard built with C# and SQL Server, providing live production metrics to floor managers.",
+      "tags": ["C#", "SQL Server", "WinForms", "Real-time"],
+      "githubUrl": "#",
+      "liveUrl": null
+    },
+    {
+      "id": "proj3",
+      "title": "Process Automation",
+      "description": "Automated business workflows using N8N and AI integration, reducing manual data-entry time by over 60%.",
+      "tags": ["N8N", "AI", "Automation", "REST API"],
+      "githubUrl": "#",
+      "liveUrl": null
+    }
+  ],
+  "contact": {
+    "email": "kittanate.th@gmail.com",
+    "github": "https://github.com/Kittanate-Th",
+    "linkedin": "https://www.linkedin.com/in/kittanate-thanee-674b092b3/"
+  }
+}

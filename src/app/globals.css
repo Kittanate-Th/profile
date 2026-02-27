@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #6366f1;
+  --color-brand-secondary: #22d3ee;
+  --color-surface-bg: #0f172a;
+  --color-surface-card: #1e293b;
+  --color-surface-border: #334155;
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  ::selection {
+    background-color: #6366f1;
+    color: #ffffff;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply py-20 px-6 max-w-5xl mx-auto;
+  }
+}
