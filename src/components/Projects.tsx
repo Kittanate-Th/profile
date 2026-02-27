@@ -1,4 +1,13 @@
+"use client";
+
+import React from "react";
+import Slider from "react-slick";
 import data from "@/data/data.json";
+import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
+
+// Import css files for slick-carousel
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 type Project = {
   id: string;
@@ -7,95 +16,144 @@ type Project = {
   tags: string[];
   githubUrl: string;
   liveUrl: string | null;
+  // image?: string; // ถ้าในอนาคตมีรูปภาพ
 };
+
+// Custom Arrow Components
+function SampleNextArrow(props: any) {
+  const { onClick } = props;
+  return (
+    <div
+      className="absolute top-1/2 -right-12 z-10 -translate-y-1/2 cursor-pointer p-2 rounded-full bg-slate-800/50 hover:bg-slate-700/70 transition-colors hidden md:block"
+      onClick={onClick}
+    >
+      <ChevronRightIcon className="h-6 w-6 text-slate-300" />
+    </div>
+  );
+}
+
+function SamplePrevArrow(props: any) {
+  const { onClick } = props;
+  return (
+    <div
+      className="absolute top-1/2 -left-12 z-10 -translate-y-1/2 cursor-pointer p-2 rounded-full bg-slate-800/50 hover:bg-slate-700/70 transition-colors hidden md:block"
+      onClick={onClick}
+    >
+      <ChevronLeftIcon className="h-6 w-6 text-slate-300" />
+    </div>
+  );
+}
 
 export default function Projects() {
   const { projects } = data;
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: projects.length >= 3 ? 3 : projects.length, // ปรับให้สัมพันธ์กับจำนวนข้อมูล
+    slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: "0px",
+    focusOnSelect: true, // เพิ่มตรงนี้! ทำให้คลิกการ์ดข้างๆ แล้วมันจะเลื่อนมาตรงกลาง
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: projects.length >= 2 ? 2 : projects.length,
+          centerMode: projects.length > 2, // ปิด Center Mode ถ้าข้อมูลน้อยเกินไป
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          centerMode: false,
+          arrows: false,
+        },
+      },
+    ],
+    appendDots: (dots: any) => (
+      <div style={{ bottom: "-40px" }}>
+        <ul className="flex justify-center gap-2 slick-dots-custom"> {dots} </ul>
+      </div>
+    ),
+    customPaging: (i: any) => (
+      <div className="w-3 h-3 rounded-full bg-slate-600 hover:bg-blue-500 transition-colors cursor-pointer dot"></div>
+    ),
+  };
+
   return (
-    <section id="projects" className="section-padding">
-      <h2 className="text-3xl font-bold text-slate-100 mb-2">Projects</h2>
-      <div className="w-12 h-1 bg-brand-primary rounded mb-10" />
+    <section id="projects" className="w-full py-20 relative overflow-visible">
+      <div className="flex flex-col gap-4 mb-12 px-4 md:px-0">
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-50">Projects</h2>
+        <div className="w-16 h-1 bg-blue-600 rounded-full" />
+      </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {(projects as Project[]).map((project) => (
-          <div
-            key={project.id}
-            className="flex flex-col bg-surface-card border border-surface-border
-                       rounded-xl p-6 hover:border-brand-primary
-                       transition-colors duration-200"
-          >
-            {/* Title */}
-            <h3 className="text-slate-100 font-semibold text-lg mb-2">
-              {project.title}
-            </h3>
+      <div className="px-8 md:px-12"> {/* เพิ่ม padding ด้านข้างสำหรับลูกศร */}
+        <Slider {...settings} className="project-slider">
+          {(projects as Project[]).map((project) => (
+            <div key={project.id} className="p-4 outline-none"> {/* wrapper สำหรับการ์ด */}
+              <div
+                className="group flex flex-col bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl overflow-hidden transition-all duration-500 relative slider-card"
+              >
+                {/* Project Image Placeholder */}
+                <div className="w-full h-48 bg-slate-800/80 border-b border-slate-700/50 flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-slate-900/80 z-0"></div>
+                  <span className="text-slate-600 font-medium z-10 opacity-50 group-hover:opacity-100 transition-all duration-500">
+                    [ {project.title} Image ]
+                  </span>
+                  
+                  {/* Tooltip Example (จะแสดงเมื่อเป็น Active Slide หรือ Hover) */}
+                  <div className="absolute bottom-4 left-4 bg-slate-900/90 px-3 py-1.5 rounded-lg border border-blue-500/30 text-xs text-blue-300 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 tooltip z-20">
+                     <span className="font-bold">{project.tags[0]}</span> - Main Tech Stack
+                  </div>
+                </div>
 
-            {/* Description */}
-            <p className="text-slate-400 text-sm leading-relaxed flex-1">
-              {project.description}
-            </p>
+                <div className="p-6 flex flex-col flex-grow z-10 bg-slate-900/90">
+                  {/* Title */}
+                  <h3 className="text-xl font-bold text-slate-100 mb-3 group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                  </h3>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mt-4">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs font-mono px-2 py-0.5 rounded
-                             bg-indigo-500/20 text-brand-primary"
-                >
-                  {tag}
-                </span>
-              ))}
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[11px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-md bg-slate-800/80 text-blue-300 border border-slate-700/50 group-hover:border-blue-500/30 transition-colors"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-slate-400 text-sm leading-relaxed flex-grow line-clamp-3">
+                    {project.description}
+                  </p>
+
+                  {/* Links */}
+                  <div className="flex gap-4 mt-6 pt-4 border-t border-slate-800/80">
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-white transition-colors"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                      </svg>
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            {/* Links */}
-            <div className="flex gap-4 mt-6 pt-4 border-t border-surface-border">
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-sm text-slate-400
-                           hover:text-slate-100 transition-colors"
-                >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                </svg>
-                GitHub
-              </a>
-
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-sm text-slate-400
-                             hover:text-brand-secondary transition-colors"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                  Live Demo
-                </a>
-              )}
-            </div>
-          </div>
-        ))}
+          ))}
+        </Slider>
       </div>
     </section>
   );

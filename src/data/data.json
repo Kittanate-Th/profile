@@ -2,12 +2,24 @@
   "hero": {
     "greeting": "Hi, I'm",
     "name": "Kittanate Thanee",
-    "roles": ["Jr. Programmer at Longbee Packaging", "Web Development & System Integration", "IoT & Embedded Systems", "Automation & AI Enthusiast"],
+    "roles": ["Programmer", "Software Engineer", "Web Development & System Integration", "IoT & Embedded Systems", "Automation & AI Enthusiast"],
     "resumeUrl": "/Resume_Kittanate.pdf"
   },
   "about": {
     "bio": "A passionate Full Stack Developer with hands-on experience in C#, SQL Server, Next.js, and IoT systems. I enjoy building tools that bridge the physical and digital world — from factory MES dashboards to smart farm sensors.",
-    "skills": ["C#", "SQL Server", "Next.js", "TypeScript", "ESP32 / IoT", "N8N", "Firebase" ,"Arduino", "AI Integration" ,"C++" ,"Python"]
+    "hardSkills": {
+      "Languages": ["C#", "Python", "JavaScript", "SQL", "C/C++", "HTML/CSS"],
+      "Frameworks": ["ASP.NET Core", "Blazor", "Next.js"],
+      "Database": ["Microsoft SQL Server", "Firebase"],
+      "Tools & Automation": ["Git", "N8N", "Google Cloud Document AI", "Arduino IDE", "Draw.io"]
+    },
+    "softSkills": [
+      "Fast Learner with a strong attention to detail",
+      "Adaptable and open to new challenges",
+      "Team-oriented with good communication skills",
+      "Problem-solving",
+      "Responsible and self-motivated"
+    ]
   },
   "experience": [
     {
@@ -15,11 +27,19 @@
       "type": "work",
       "title": "Programmer",
       "organization": "LONGBEE PACKAGING CO., LTD.",
-      "period": "2025 – Present",
+      "period": "August 2025 – Present",
       "description": "Developed MES real-time dashboards, automated reporting pipelines"
     },
     {
       "id": "exp2",
+      "type": "work",
+      "title": "Internship as Web Developer",
+      "organization": "IT-Technocom",
+      "period": "April 2022 – June 2022",
+      "description": "Designed and developed the front-end website using HTML, CSS, and JavaScript, focusing on a responsive and modern corporate design.\nStudied and practiced core web technologies: HTML, CSS, JavaScript, and PHP\nDesigned UX/UI layouts and interactive prototypes using Figma."
+    },
+    {
+      "id": "exp3",
       "type": "education",
       "title": "Bachelor of Engineering",
       "organization": "Kasetsart University Sriracha Campus",
@@ -27,6 +47,48 @@
       "description": "Major in Computer Engineering and Informatics. Focused on embedded systems and software development."
     }
   ],
+  "certificates": [
+  {
+    "id": "cert1",
+    "name": "Problem Solving (Basic)",
+    "issuer": "HackerRank",
+    "credentialUrl": "https://www.hackerrank.com/certificates/iframe/d0c7ded65882",
+    "imageUrl": "/ProblemSolving.jpg",
+    "theme": "problem"
+  },
+  {
+    "id": "cert2",
+    "name": "SQL (Basic)",
+    "issuer": "HackerRank",
+    "credentialUrl": "https://www.hackerrank.com/certificates/iframe/ee8efb67b639",
+    "imageUrl": "/SQL.jpg",
+    "theme": "sql"
+  },
+  {
+    "id": "cert3",
+    "name": "Python (Basic)",
+    "issuer": "HackerRank",
+    "credentialUrl": "https://www.hackerrank.com/certificates/iframe/a7faac36861d",
+    "imageUrl": "/Python.jpg",
+    "theme": "python"
+  },
+  {
+    "id": "cert4",
+    "name": "Foundational C# with Microsoft",
+    "issuer": "freeCodeCamp x Microsoft",
+    "credentialUrl": "https://www.freecodecamp.org/certification/kittanate_thanee/foundational-c-sharp-with-microsoft",
+    "imageUrl": "/CSharp.jpg",
+    "theme": "csharp"
+  },
+  {
+    "id": "cert5",
+    "name": "Responsive Web Design",
+    "issuer": "freeCodeCamp",
+    "credentialUrl": "https://www.freecodecamp.org/certification/fcc46e5cecf-78a3-4e5d-8ebb-4293b16136ff/responsive-web-design",
+    "imageUrl": "/Responsive.png",
+    "theme": "responsive"
+  }
+],
   "projects": [
     {
       "id": "proj1",
@@ -51,6 +113,22 @@
       "tags": ["N8N", "AI", "Automation", "REST API"],
       "githubUrl": "#",
       "liveUrl": null
+    },
+    {
+      "id": "proj4",
+      "title": "Job Hunter Agent",
+      "description": "Automated web scraping agent built with TypeScript to extract, filter, and alert on new job postings from various platforms.",
+      "tags": ["TypeScript", "Web Scraping", "Node.js", "Automation"],
+      "githubUrl": "#",
+      "liveUrl": null
+    },
+    {
+      "id": "proj5",
+      "title": "Modern Dev Portfolio",
+      "description": "A minimal, glassmorphism-themed personal portfolio built with Next.js App Router, TypeScript, and Tailwind CSS.",
+      "tags": ["Next.js", "Tailwind CSS", "TypeScript", "React"],
+      "githubUrl": "#",
+      "liveUrl": "#"
     }
   ],
   "contact": {

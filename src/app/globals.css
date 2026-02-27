@@ -1,23 +1,61 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-primary: #6366f1;
-  --color-brand-secondary: #22d3ee;
-  --color-surface-bg: #0f172a;
-  --color-surface-card: #1e293b;
-  --color-surface-border: #334155;
-  --font-sans: "Inter", sans-serif;
+  /* Minimal Dark Theme - Design Tokens */
+  --color-bg-base: #020617; /* พื้นหลังเว็บที่มืดสนิท (Slate 950) */
+  --color-bg-card: #0f172a; /* พื้นหลังการ์ดหรือส่วนย่อย (Slate 900) */
+  --color-border-subtle: #1e293b; /* เส้นขอบบางๆ (Slate 800) */
+  --color-text-primary: #f8fafc; /* สีตัวหนังสือหลัก (Slate 50) */
+  --color-text-muted: #94a3b8; /* สีตัวหนังสือรอง (Slate 400) */
+  --color-brand-accent: #3b82f6; /* สีน้ำเงินสว่างสำหรับปุ่มหรือจุดเน้น (Blue 500) */
 }
 
 @layer base {
+  body {
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+  }
+  
   ::selection {
-    background-color: #6366f1;
+    background-color: var(--color-brand-accent);
     color: #ffffff;
   }
 }
 
 @layer utilities {
   .section-padding {
-    @apply py-20 px-6 max-w-5xl mx-auto;
+    @apply py-20 px-4 md:px-8;
   }
+}
+
+/* Slick Carousel Customization */
+.slick-track {
+  @apply flex items-center; /* จัดให้การ์ดอยู่กึ่งกลางแนวตั้ง */
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.project-slider .slick-slide {
+  @apply transition-all duration-500;
+}
+
+/* ปกติให้การ์ดดูทึบๆ และเล็กกว่าหน่อย */
+.project-slider .slick-slide .slider-card {
+  @apply opacity-60 scale-95 blur-[1px] border-transparent;
+}
+
+/* การ์ดที่อยู่ตรงกลาง (Active Slide) */
+.project-slider .slick-center .slider-card {
+  @apply opacity-100 scale-105 blur-none border-blue-500/50 shadow-[0_0_30px_rgba(59,130,246,0.2)];
+  z-index: 10;
+}
+
+/* แสดง Tooltip เฉพาะการ์ดตรงกลาง */
+.project-slider .slick-center .slider-card .tooltip {
+    @apply opacity-100 translate-y-0;
+}
+
+/* Custom Dots */
+.slick-dots-custom li.slick-active .dot {
+    @apply bg-blue-500 scale-125;
 }
