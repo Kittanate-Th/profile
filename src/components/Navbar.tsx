@@ -32,9 +32,8 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#hero"
-          className="text-slate-50 font-bold text-2xl tracking-tight hover:text-blue-500 transition-colors"
-        >
-          Hello World<span className="text-blue-500">.</span>
+          className="text-slate-50 font-bold text-2xl tracking-tight hover:text-blue-500 transition-colors">
+          <span className="text-slate-500">&lt;</span>Kittanate<span className="text-slate-500">/&gt;</span>
         </a>
 
         {/* Desktop Links */}
