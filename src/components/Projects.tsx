@@ -1,11 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Slider from "react-slick";
+import { animate, splitText, stagger } from "animejs";
 import data from "@/data/data.json";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
 
-// Import css files for slick-carousel
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -16,7 +16,6 @@ type Project = {
   tags: string[];
   githubUrl: string;
   liveUrl: string | null;
-  // image?: string; // ถ้าในอนาคตมีรูปภาพ
 };
 
 // Custom Arrow Components
@@ -47,15 +46,82 @@ function SamplePrevArrow(props: any) {
 export default function Projects() {
   const { projects } = data;
 
+  // Refs
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  // Animation Effect
+  useEffect(() => {
+    const sectionEl = sectionRef.current;
+    const titleEl = titleRef.current;
+    const sliderEl = sliderRef.current;
+
+    if (!sectionEl || !titleEl || !sliderEl) return;
+
+    // Text Splitting
+    const splitTitle = splitText(titleEl, { chars: true });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Intro Animations
+            animate(splitTitle.chars, {
+              opacity: [0, 1],
+              y: ["1rem", "0rem"],
+              delay: stagger(30),
+              duration: 600,
+              ease: "outExpo",
+            });
+
+            animate(sliderEl, {
+              opacity: [0, 1],
+              y: ["2rem", "0rem"],
+              delay: 300, // Wait for title to start
+              duration: 800,
+              ease: "outExpo",
+            });
+          } else {
+            // Outro Animations
+            animate(splitTitle.chars, {
+              opacity: [1, 0],
+              y: ["0rem", "-1rem"],
+              duration: 300,
+              ease: "inExpo",
+            });
+
+            animate(sliderEl, {
+              opacity: [1, 0],
+              y: ["0rem", "1rem"],
+              duration: 300,
+              ease: "inExpo",
+            });
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(sectionEl);
+
+    // Cleanup
+    return () => {
+      observer.disconnect();
+      splitTitle.revert();
+    };
+  }, []);
+
+  // Slider Settings
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: projects.length >= 3 ? 3 : projects.length, // ปรับให้สัมพันธ์กับจำนวนข้อมูล
+    slidesToShow: projects.length >= 3 ? 3 : projects.length,
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: "0px",
-    focusOnSelect: true, // เพิ่มตรงนี้! ทำให้คลิกการ์ดข้างๆ แล้วมันจะเลื่อนมาตรงกลาง
+    focusOnSelect: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
@@ -63,7 +129,7 @@ export default function Projects() {
         breakpoint: 1024,
         settings: {
           slidesToShow: projects.length >= 2 ? 2 : projects.length,
-          centerMode: projects.length > 2, // ปิด Center Mode ถ้าข้อมูลน้อยเกินไป
+          centerMode: projects.length > 2,
         },
       },
       {
@@ -80,45 +146,47 @@ export default function Projects() {
         <ul className="flex justify-center gap-2 slick-dots-custom"> {dots} </ul>
       </div>
     ),
-    customPaging: (i: any) => (
+    customPaging: () => (
       <div className="w-3 h-3 rounded-full bg-slate-600 hover:bg-blue-500 transition-colors cursor-pointer dot"></div>
     ),
   };
 
   return (
-    <section id="projects" className="w-full py-20 relative overflow-visible">
-      <div className="flex flex-col gap-4 mb-12 px-4 md:px-0">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-50">Projects</h2>
+    <section id="projects" ref={sectionRef} className="w-full py-20 relative overflow-visible">
+      {/* Header */}
+      <div className="flex flex-col gap-4 mb-12 px-4 md:px-0 overflow-hidden">
+        <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold text-slate-50 ">
+          Projects
+        </h2>
         <div className="w-16 h-1 bg-blue-600 rounded-full" />
       </div>
 
-      <div className="px-8 md:px-12"> {/* เพิ่ม padding ด้านข้างสำหรับลูกศร */}
+      {/* Slider Container */}
+      <div ref={sliderRef} className="px-8 md:px-12 ">
         <Slider {...settings} className="project-slider">
           {(projects as Project[]).map((project) => (
-            <div key={project.id} className="p-4 outline-none"> {/* wrapper สำหรับการ์ด */}
-              <div
-                className="group flex flex-col bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl overflow-hidden transition-all duration-500 relative slider-card"
-              >
-                {/* Project Image Placeholder */}
+            <div key={project.id} className="p-4 outline-none">
+              <div className="group flex flex-col bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl overflow-hidden transition-all duration-500 relative slider-card">
+                
+                {/* Image Placeholder */}
                 <div className="w-full h-48 bg-slate-800/80 border-b border-slate-700/50 flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-slate-900/80 z-0"></div>
                   <span className="text-slate-600 font-medium z-10 opacity-50 group-hover:opacity-100 transition-all duration-500">
                     [ {project.title} Image ]
                   </span>
                   
-                  {/* Tooltip Example (จะแสดงเมื่อเป็น Active Slide หรือ Hover) */}
+                  {/* Tooltip */}
                   <div className="absolute bottom-4 left-4 bg-slate-900/90 px-3 py-1.5 rounded-lg border border-blue-500/30 text-xs text-blue-300 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 tooltip z-20">
-                     <span className="font-bold">{project.tags[0]}</span> - Main Tech Stack
+                    <span className="font-bold">{project.tags[0]}</span> - Main Tech Stack
                   </div>
                 </div>
 
+                {/* Card Content */}
                 <div className="p-6 flex flex-col flex-grow z-10 bg-slate-900/90">
-                  {/* Title */}
                   <h3 className="text-xl font-bold text-slate-100 mb-3 group-hover:text-blue-400 transition-colors">
                     {project.title}
                   </h3>
 
-                  {/* Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag) => (
                       <span
@@ -130,12 +198,10 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  {/* Description */}
                   <p className="text-slate-400 text-sm leading-relaxed flex-grow line-clamp-3">
                     {project.description}
                   </p>
 
-                  {/* Links */}
                   <div className="flex gap-4 mt-6 pt-4 border-t border-slate-800/80">
                     <a
                       href={project.githubUrl}

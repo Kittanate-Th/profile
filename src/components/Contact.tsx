@@ -1,7 +1,90 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { animate, splitText, stagger } from "animejs";
 import data from "@/data/data.json";
 
 export default function Contact() {
   const { contact } = data;
+
+  // Refs
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const descRef = useRef<HTMLParagraphElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
+
+  // Animation Effect
+  useEffect(() => {
+    const sectionEl = sectionRef.current;
+    const titleEl = titleRef.current;
+    const descEl = descRef.current;
+    const cardsEl = cardsRef.current;
+    const footerEl = footerRef.current;
+
+    if (!sectionEl || !titleEl || !descEl || !cardsEl || !footerEl) return;
+
+    // Text Splitting
+    const splitTitle = splitText(titleEl, { chars: true });
+    const splitDesc = splitText(descEl, { lines: true });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Intro Animations
+            animate(splitTitle.chars, {
+              opacity: [0, 1],
+              y: ["1rem", "0rem"],
+              delay: stagger(30),
+              duration: 600,
+              ease: "outExpo",
+            });
+
+            animate(splitDesc.lines, {
+              opacity: [0, 1],
+              y: ["1rem", "0rem"],
+              delay: stagger(60, { start: 200 }),
+              duration: 800,
+              ease: "outExpo",
+            });
+
+            animate(cardsEl.children, {
+              opacity: [0, 1],
+              y: ["2rem", "0rem"],
+              delay: stagger(100, { start: 400 }),
+              duration: 800,
+              ease: "outExpo",
+            });
+
+            animate(footerEl, {
+              opacity: [0, 1],
+              y: ["1rem", "0rem"],
+              delay: 800, // Wait for cards to finish
+              duration: 800,
+              ease: "outExpo",
+            });
+          } else {
+            // Outro Animations
+            animate(splitTitle.chars, { opacity: [1, 0], y: ["0rem", "-1rem"], duration: 300, ease: "inExpo" });
+            animate(splitDesc.lines, { opacity: [1, 0], y: ["0rem", "-1rem"], duration: 300, ease: "inExpo" });
+            animate(cardsEl.children, { opacity: [1, 0], y: ["0rem", "1rem"], duration: 300, ease: "inExpo" });
+            animate(footerEl, { opacity: [1, 0], y: ["0rem", "1rem"], duration: 300, ease: "inExpo" });
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(sectionEl);
+
+    // Cleanup
+    return () => {
+      observer.disconnect();
+      splitTitle.revert();
+      splitDesc.revert();
+    };
+  }, []);
 
   const links = [
     {
@@ -37,30 +120,31 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="w-full">
-      <div className="flex flex-col gap-4 mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-50">Contact</h2>
+    <section id="contact" ref={sectionRef} className="w-full">
+      {/* Header */}
+      <div className="flex flex-col gap-4 mb-10 overflow-hidden">
+        <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold text-slate-50 ">
+          Contact
+        </h2>
         <div className="w-16 h-1 bg-blue-600 rounded-full" />
       </div>
 
       <div className="w-full">
-        <p className="text-slate-400 text-lg leading-relaxed mb-8 max-w-2xl">
+        {/* Description */}
+        <p ref={descRef} className="text-slate-400 text-lg leading-relaxed mb-8 max-w-2xl ">
           I'm currently open to new opportunities. Whether you have a question
           or just want to say hi!! my inbox is always open!
         </p>
 
-        {/* CSS Grid สำหรับการจัด 3 คอลัมน์บน Desktop */}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Contact Links Grid */}
+        <div ref={cardsRef} className="grid md:grid-cols-3 gap-6">
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between p-6 rounded-2xl
-                         bg-slate-900/40 backdrop-blur-md border border-slate-800
-                         hover:border-blue-500/50 hover:bg-slate-800/60 hover:-translate-y-1 
-                         transition-all duration-300 shadow-lg"
+              className="group flex items-center justify-between p-6 rounded-2xl opacity-0 bg-slate-900/40 backdrop-blur-md border border-slate-800 hover:border-blue-500/50 hover:bg-slate-800/60 hover:-translate-y-1 transition-all duration-300 shadow-lg"
             >
               <div className="flex items-center gap-4">
                 <div className="text-slate-400 group-hover:text-blue-400 transition-colors">
@@ -72,7 +156,7 @@ export default function Contact() {
                 </div>
               </div>
               
-              {/* ลูกศรชี้ขวา (Arrow Right) */}
+              {/* Arrow Icon */}
               <div className="text-slate-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -83,15 +167,15 @@ export default function Contact() {
         </div>
 
         {/* Footer */}
-        <div className="mt-24 pt-8 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div ref={footerRef} className="mt-24 pt-8 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center gap-4 opacity-0">
           <p className="text-slate-500 text-sm">
             © {new Date().getFullYear()} <a href="https://www.facebook.com/zroyalz/" target="_blank" className="text-slate-400 hover:text-slate-300">Kittanate Thanee</a>. All rights reserved.
           </p>
           <p className="text-slate-600 text-sm">
             Built with <span className="text-slate-400"><a href="https://nextjs.org/" target="_blank" className="text-slate-400 hover:text-slate-300">Next.js(16.1.6) </a></span> &  
             <span className="text-blue-400/80">
-            <a href="https://tailwindcss.com/" target="_blank" className="text-blue-400/80 hover:text-blue-300"> Tailwind CSS(4.2.1) </a>and   
-            <a href="https://animejs.com/" target="_blank" className="text-blue-400/80 hover:text-blue-300"> Anime.js(4.3.6)</a></span>
+            <a href="https://tailwindcss.com/" target="_blank" className="text-blue-400/80 hover:text-blue-300"> Tailwind CSS@4.2.1 </a>and   
+            <a href="https://animejs.com/" target="_blank" className="text-blue-400/80 hover:text-blue-300"> Animejs@4.3.6</a></span>
           </p>
         </div>
       </div>

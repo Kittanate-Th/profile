@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { animate, stagger } from "animejs";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -13,11 +14,38 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  
+
+  const logoRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Anime.js Effect สำหรับ Logo
+  useEffect(() => {
+    if (logoRef.current) {
+      // ดึงเอาเฉพาะ span ที่มีคลาส logo-letter มาทำอนิเมชัน
+      const letters = logoRef.current.querySelectorAll('.logo-letter');
+      
+      animate(letters, {
+        
+        y: [
+          { to: '-0.75rem', ease: 'outExpo', duration: 600 },
+          { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
+        ],
+        rotate: {
+          from: '-1turn',
+          delay: 0
+        },
+        delay: stagger(50),
+        ease: 'inOutCirc',
+        loopDelay: 2000, 
+        loop: true
+      });
+    }
   }, []);
 
   return (
@@ -29,11 +57,28 @@ export default function Navbar() {
         }`}
     >
       <nav className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-        {/* Logo */}
-        <a
-          href="#hero"
-          className="text-slate-50 font-bold text-2xl tracking-tight hover:text-blue-500 transition-colors">
-          <span className="text-slate-500">&lt;</span>Kittanate<span className="text-slate-500">/&gt;</span>
+       <a
+          href="#kittanate"
+          ref={logoRef}
+          className="text-slate-50 font-bold text-2xl tracking-tight hover:text-blue-500 transition-colors flex items-center">
+          <span className="text-slate-500">&lt;</span>
+          <div className="relative flex">
+            <span className="absolute left-0 top-0 text-slate-800 select-none pointer-events-none">
+              Kittanate
+            </span>
+            <div className="flex relative z-10 text-slate-50 hover:text-blue-500 transition-colors">
+              {"Kittanate".split("").map((char, index) => (
+                <span 
+                  key={index} 
+                  className="logo-letter inline-block"
+                >
+                  {char}
+                </span>
+              ))}
+            </div>
+          </div>
+          
+          <span className="text-slate-500">/&gt;</span>
         </a>
 
         {/* Desktop Links */}

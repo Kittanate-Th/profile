@@ -59,3 +59,9 @@
 .slick-dots-custom li.slick-active .dot {
     @apply bg-blue-500 scale-125;
 }
+
+#animation .text-xl {
+  font-size: 1.5rem;
+  color: currentColor;
+  letter-spacing: 0.06em;
+}

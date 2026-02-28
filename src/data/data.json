@@ -6,7 +6,7 @@
     "resumeUrl": "/Resume_Kittanate.pdf"
   },
   "about": {
-    "bio": "A passionate Full Stack Developer with hands-on experience in C#, SQL Server, Next.js, and IoT systems. I enjoy building tools that bridge the physical and digital world — from factory MES dashboards to smart farm sensors.",
+    "bio": "I'm a developer who genuinely enjoys building things that actually work and make life easier whether that's a factory dashboard showing live production data, a sensor system talking to your phone, or an automation that kills hours of manual work in minutes. My background is in Computer Engineering, and I've worked across the stack from embedded C++ on ESP32 to full-stack web with Next.js and ASP.NET. Lately I've been really into the AI side of things Prompt Engineering, AI Agents, and how to plug AI into real workflows that matter. If there's a problem worth solving, I'm probably already thinking about how to automate it.",
     "hardSkills": {
       "Languages": ["C#", "Python", "JavaScript", "SQL", "C/C++", "HTML/CSS"],
       "Frameworks": ["ASP.NET Core", "Blazor", "Next.js"],
@@ -28,7 +28,7 @@
       "title": "Programmer",
       "organization": "LONGBEE PACKAGING CO., LTD.",
       "period": "August 2025 – Present",
-      "description": "Developed MES real-time dashboards, automated reporting pipelines"
+      "description": "• Built full-stack dashboards with ASP.NET Core and Next.js to give executives real-time visibility into WIP, traceability, and defect analysis\n• Customized ERP/MES workflows and built a real-time anomaly detection dashboard to flag reporting delays and monitor Good/NG quantities instantly\n• Automated import/export document processing using N8N + Google Cloud Document AI + Gemini AI cut manual data entry from hours to under 10 minutes\n• Built a .NET Core + Blazor web app to auto-populate Material Receipt and Warehouse Transfer forms by pulling data directly from ERP, eliminating manual entry entirely\n• Developed a Python automation tool using Tesseract OCR to extract ASN numbers from PDFs, resize, and reformat for printing saving significant manual prep time"
     },
     {
       "id": "exp2",
@@ -36,97 +36,105 @@
       "title": "Internship as Web Developer",
       "organization": "IT-Technocom",
       "period": "April 2022 – June 2022",
-      "description": "Designed and developed the front-end website using HTML, CSS, and JavaScript, focusing on a responsive and modern corporate design.\nStudied and practiced core web technologies: HTML, CSS, JavaScript, and PHP\nDesigned UX/UI layouts and interactive prototypes using Figma."
+      "description": "• Designed and developed a responsive corporate website using HTML, CSS, and JavaScript\n• Practiced core web technologies including PHP and modern front-end fundamentals\n• Designed UX/UI layouts and interactive prototypes using Figma"
     },
     {
       "id": "exp3",
+      "type": "project",
+      "title": "Computer Engineering Project",
+      "organization": "Kasetsart University Sriracha Campus",
+      "period": "December 2022 – April 2023",
+      "description": "• Designed and implemented embedded code for ESP32 microcontroller to handle sensor data collection, calibration, and automatic control logic\n• Transmitted multi-sensor data in real time to Firebase using C++ (Arduino IDE)\n• Built a Flutter mobile app for remotely controlling actuators water pump, lights, and fertilizer dispenser with a clean, user-friendly interface"
+    },
+    {
+      "id": "exp4",
       "type": "education",
       "title": "Bachelor of Engineering",
       "organization": "Kasetsart University Sriracha Campus",
       "period": "2019 – 2023",
-      "description": "Major in Computer Engineering and Informatics. Focused on embedded systems and software development."
+      "description": "• Major in Computer Engineering and Informatics\n• GPA 2.85\n• Focused on embedded systems, software development, and real-world engineering projects"
     }
   ],
   "certificates": [
-  {
-    "id": "cert1",
-    "name": "Problem Solving (Basic)",
-    "issuer": "HackerRank",
-    "credentialUrl": "https://www.hackerrank.com/certificates/iframe/d0c7ded65882",
-    "imageUrl": "/ProblemSolving.jpg",
-    "theme": "problem"
-  },
-  {
-    "id": "cert2",
-    "name": "SQL (Basic)",
-    "issuer": "HackerRank",
-    "credentialUrl": "https://www.hackerrank.com/certificates/iframe/ee8efb67b639",
-    "imageUrl": "/SQL.jpg",
-    "theme": "sql"
-  },
-  {
-    "id": "cert3",
-    "name": "Python (Basic)",
-    "issuer": "HackerRank",
-    "credentialUrl": "https://www.hackerrank.com/certificates/iframe/a7faac36861d",
-    "imageUrl": "/Python.jpg",
-    "theme": "python"
-  },
-  {
-    "id": "cert4",
-    "name": "Foundational C# with Microsoft",
-    "issuer": "freeCodeCamp x Microsoft",
-    "credentialUrl": "https://www.freecodecamp.org/certification/kittanate_thanee/foundational-c-sharp-with-microsoft",
-    "imageUrl": "/CSharp.jpg",
-    "theme": "csharp"
-  },
-  {
-    "id": "cert5",
-    "name": "Responsive Web Design",
-    "issuer": "freeCodeCamp",
-    "credentialUrl": "https://www.freecodecamp.org/certification/fcc46e5cecf-78a3-4e5d-8ebb-4293b16136ff/responsive-web-design",
-    "imageUrl": "/Responsive.png",
-    "theme": "responsive"
-  }
-],
+    {
+      "id": "cert1",
+      "name": "Problem Solving (Basic)",
+      "issuer": "HackerRank",
+      "credentialUrl": "https://www.hackerrank.com/certificates/iframe/d0c7ded65882",
+      "imageUrl": "/ProblemSolving.jpg",
+      "theme": "problem"
+    },
+    {
+      "id": "cert2",
+      "name": "SQL (Basic)",
+      "issuer": "HackerRank",
+      "credentialUrl": "https://www.hackerrank.com/certificates/iframe/ee8efb67b639",
+      "imageUrl": "/SQL.jpg",
+      "theme": "sql"
+    },
+    {
+      "id": "cert3",
+      "name": "Python (Basic)",
+      "issuer": "HackerRank",
+      "credentialUrl": "https://www.hackerrank.com/certificates/iframe/a7faac36861d",
+      "imageUrl": "/Python.jpg",
+      "theme": "python"
+    },
+    {
+      "id": "cert4",
+      "name": "Foundational C# with Microsoft",
+      "issuer": "freeCodeCamp x Microsoft",
+      "credentialUrl": "https://www.freecodecamp.org/certification/kittanate_thanee/foundational-c-sharp-with-microsoft",
+      "imageUrl": "/CSharp.jpg",
+      "theme": "csharp"
+    },
+    {
+      "id": "cert5",
+      "name": "Responsive Web Design",
+      "issuer": "freeCodeCamp",
+      "credentialUrl": "https://www.freecodecamp.org/certification/fcc46e5cecf-78a3-4e5d-8ebb-4293b16136ff/responsive-web-design",
+      "imageUrl": "/Responsive.png",
+      "theme": "responsive"
+    }
+  ],
   "projects": [
     {
       "id": "proj1",
       "title": "Smart Farm IoT",
-      "description": "Real-time soil moisture and climate monitoring system using ESP32 sensors with Firebase as the backend and a live dashboard.",
-      "tags": ["ESP32", "Firebase", "IoT", "Next.js"],
+      "description": "ESP32-based system that collects multi-sensor data (soil moisture, climate) and streams it to Firebase in real time. Paired with a Flutter mobile app to remotely control a water pump, lights, and fertilizer dispenser.",
+      "tags": ["ESP32", "C++", "Firebase", "Flutter", "IoT"],
       "githubUrl": "#",
       "liveUrl": "#"
     },
     {
       "id": "proj2",
       "title": "MES Real-time Dashboard",
-      "description": "Manufacturing Execution System dashboard built with C# and SQL Server, providing live production metrics to floor managers.",
-      "tags": ["C#", "SQL Server", "WinForms", "Real-time"],
+      "description": "Manufacturing Execution System dashboard built with ASP.NET Core and SQL Server, giving floor managers live visibility into WIP, traceability, defect analysis, and anomaly detection.",
+      "tags": ["C#", "ASP.NET Core", "SQL Server", "Real-time"],
       "githubUrl": "#",
       "liveUrl": null
     },
     {
       "id": "proj3",
-      "title": "Process Automation",
-      "description": "Automated business workflows using N8N and AI integration, reducing manual data-entry time by over 60%.",
-      "tags": ["N8N", "AI", "Automation", "REST API"],
+      "title": "Document Processing Automation",
+      "description": "Automated import/export document pipeline using N8N, Google Cloud Document AI, and Gemini AI. Cut manual data entry time from hours down to under 10 minutes.",
+      "tags": ["N8N", "Google Cloud Document AI", "Gemini AI", "Automation"],
       "githubUrl": "#",
       "liveUrl": null
     },
     {
       "id": "proj4",
-      "title": "Job Hunter Agent",
-      "description": "Automated web scraping agent built with TypeScript to extract, filter, and alert on new job postings from various platforms.",
-      "tags": ["TypeScript", "Web Scraping", "Node.js", "Automation"],
+      "title": "ERP Auto-Form Web App",
+      "description": "A .NET Core + Blazor web app that auto-populates Material Receipt and Warehouse Transfer forms by pulling data directly from the ERP system zero manual entry required.",
+      "tags": [".NET Core", "Blazor", "ERP Integration", "C#"],
       "githubUrl": "#",
       "liveUrl": null
     },
     {
       "id": "proj5",
       "title": "Modern Dev Portfolio",
-      "description": "A minimal, glassmorphism-themed personal portfolio built with Next.js App Router, TypeScript, and Tailwind CSS.",
-      "tags": ["Next.js", "Tailwind CSS", "TypeScript", "React"],
+      "description": "A minimal, pixel-art themed personal portfolio built with Next.js App Router, TypeScript, and Tailwind CSS with smooth animations powered by Anime.js.",
+      "tags": ["Next.js", "Tailwind CSS", "TypeScript", "Anime.js"],
       "githubUrl": "#",
       "liveUrl": "#"
     }
@@ -134,6 +142,7 @@
   "contact": {
     "email": "kittanate.th@gmail.com",
     "github": "https://github.com/Kittanate-Th",
-    "linkedin": "https://www.linkedin.com/in/kittanate-thanee-674b092b3/"
+    "linkedin": "https://www.linkedin.com/in/kittanate-thanee-674b092b3/",
+    "message": "I'm currently open to new opportunities whether it's full-time, freelance, or just an interesting project worth building together. If you think we'd be a good fit, or you just want to talk tech, feel free to reach out. I'd love to hear from you."
   }
 }

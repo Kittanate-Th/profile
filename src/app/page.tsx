@@ -1,15 +1,15 @@
-import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Exp from "@/components/Exp";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Certificates from "@/components/Certificates";
 import AnimatedSection from "@/components/AnimatedSection";
+import Kittanate from "@/components/Hero";
 
 export default function Home() {
   return (
     <main className="max-w-6xl mx-auto min-h-screen flex flex-col gap-24 py-16">
-      <Hero />
+      <Kittanate />
       <AnimatedSection delay={0}>
         <About />
       </AnimatedSection>
