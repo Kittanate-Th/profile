@@ -28,6 +28,7 @@
       "title": "Programmer",
       "organization": "LONGBEE PACKAGING CO., LTD.",
       "period": "August 2025 – Present",
+      "startDate": "2025-08-13",
       "description": "• Built full-stack dashboards with ASP.NET Core and Next.js to give executives real-time visibility into WIP, traceability, and defect analysis\n• Customized ERP/MES workflows and built a real-time anomaly detection dashboard to flag reporting delays and monitor Good/NG quantities instantly\n• Automated import/export document processing using N8N + Google Cloud Document AI + Gemini AI cut manual data entry from hours to under 10 minutes\n• Built a .NET Core + Blazor web app to auto-populate Material Receipt and Warehouse Transfer forms by pulling data directly from ERP, eliminating manual entry entirely\n• Developed a Python automation tool using Tesseract OCR to extract ASN numbers from PDFs, resize, and reformat for printing saving significant manual prep time"
     },
     {
@@ -52,7 +53,7 @@
       "title": "Bachelor of Engineering",
       "organization": "Kasetsart University Sriracha Campus",
       "period": "2019 – 2023",
-      "description": "• Major in Computer Engineering and Informatics\n• GPA 2.85\n• Focused on embedded systems, software development, and real-world engineering projects"
+      "description": "• Major in Computer Engineering and Informatics\n • Focused on embedded systems, software development, and real-world engineering projects"
     }
   ],
   "certificates": [

@@ -65,3 +65,16 @@
   color: currentColor;
   letter-spacing: 0.06em;
 }
+
+@keyframes breath-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgb(1, 255, 255), inset 0 0 10px rgba(59, 130, 246, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(0, 183, 255, 0.384), inset 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+}
+
+.animate-breath-glow {
+  animation: breath-glow 4s ease-in-out infinite; 
+}

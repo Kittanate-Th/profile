@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import AnimatedFavicon from "@/components/AnimatedFavicon";
+import IguanaMascot from "@/components/IguanaMascot";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} antialiased selection:bg-brand-accent selection:text-white`}>
-        {/* เราจะเอา Navbar ออกจากการครอบรวมก่อน เพื่อให้หน้าเว็บคลีนที่สุด เดี๋ยวค่อยจัดตำแหน่ง Navbar ใหม่ */}
+        <IguanaMascot />
         <AnimatedFavicon />
         <Navbar />
         {children}

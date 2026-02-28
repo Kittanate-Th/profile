@@ -151,7 +151,7 @@ export default function Hero() {
       ref={sectionRef}
       className="w-full flex justify-center items-center pt-32 pb-16 px-4 md:px-0"
     >
-      <div className="flex flex-col md:flex-row items-center gap-8 bg-slate-900/40 backdrop-blur-md border border-slate-800 p-8 md:p-12 rounded-[2rem] w-full max-w-4xl shadow-2xl relative overflow-hidden">
+      <div className="flex flex-col md:flex-row items-center gap-8 bg-slate-900/40 backdrop-blur-md border border-slate-800 p-8 md:p-12 rounded-[2rem] w-full max-w-4xl relative overflow-hidden animate-breath-glow">
         {/* Background Glow */}
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600/0 via-blue-500/50 to-blue-600/0"></div>
 
