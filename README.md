@@ -1,6 +1,6 @@
 # 👨‍💻 Kittanate Thanee - Interactive Developer Portfolio
 
-This is my personal portfolio, packed with interactivity and built for top-notch performance using **Next.js** and **Tailwind CSS.** It's not just about listing projects and experience—it's a way to show off my skills in DOM manipulation, smooth rendering, and creative UX/UI design.
+This is my personal portfolio, packed with interactivity and built for top-notch performance using **Next.js** and **Tailwind CSS.** It's not just about listing projects and experience it's a way to show off my skills in DOM manipulation, smooth rendering, and creative UX/UI design.
 
 ![Screenshot of the portfolio](https://img2.pic.in.th/Screenshot-2026-03-03-115741.png)
 
@@ -13,7 +13,7 @@ This portfolio goes beyond a typical static site by incorporating advanced front
 - **🦎 Smart Interactive Mascot:** A custom SVG iguana that brings the page to life. It uses `IntersectionObserver` and custom DOM events to seamlessly hop between sections, track mouse movements, and react to UI changes (like hiding itself when a modal opens).
 - **🌌 Smooth Canvas Background:** The background particle effects are built using the HTML5 `<canvas>` API instead of heavy DOM elements. This ensures a fluid, 60FPS parallax scrolling experience without slowing down the browser.
 - **⚡ Hardware-Accelerated Animations:** Powered by Anime.js, the animations rely strictly on CSS transforms (like translate, scale, and rotate) rather than layout-altering properties. This minimizes browser repaints and keeps the performance highly efficient.
-- **🧱 Data-Driven Architecture:** Built with the "separation of concerns" principle. All content—such as the bio, experience, and projects—is fully decoupled from the UI and managed centrally in a simple `src/data/data.json` file.
+- **🧱 Data-Driven Architecture:** Built with the "separation of concerns" principle. All content such as the bio, experience, and projects is fully decoupled from the UI and managed centrally in a simple `src/data/data.json` file.
 - **💡 Engaging Micro-Interactions:** Includes dynamic spotlight hover effects driven by CSS variables and JS, organic staggered delays, and a live real-time counter tracking current job tenure.
 
 ---
@@ -52,7 +52,7 @@ npm run dev
 ```
 
 ### 📂 Updating Content
-I made this easy to maintain—no need to poke around in React components. Just edit src/data/data.json, and the UI will update automatically.
+I made this easy to maintain no need to poke around in React components. Just edit src/data/data.json, and the UI will update automatically.
 ````json
 // Example from src/data/data.json
 {

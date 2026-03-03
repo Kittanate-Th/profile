@@ -102,18 +102,34 @@
     {
       "id": "proj1",
       "title": "Smart Farm IoT",
-      "description": "ESP32-based system that collects multi-sensor data (soil moisture, climate) and streams it to Firebase in real time. Paired with a Flutter mobile app to remotely control a water pump, lights, and fertilizer dispenser.",
+      "description": "ESP32-based system that collects multi-sensor data and streams it to Firebase in real time. Paired with a Flutter mobile app to remotely control actuators.",
       "tags": ["ESP32", "C++", "Firebase", "Flutter", "IoT"],
       "githubUrl": "#",
-      "liveUrl": "#"
+      "liveUrl": "#",
+      "image": "/images/smart-farm.jpg", 
+      "longDescription": "โปรเจกต์นี้เริ่มต้นจากความต้องการนำเทคโนโลยี IoT มาปรับใช้ในการเกษตรแบบแม่นยำ (Precision Agriculture) โดยผมเป็นผู้พัฒนาสถาปัตยกรรมตั้งแต่ระดับ Hardware ไปจนถึง Application สเกลการทำงานคือการใช้ไมโครคอนโทรลเลอร์ ESP32 เป็นตัวกลางในการอ่านค่าเซ็นเซอร์ต่างๆ ในแปลงเกษตร (เช่น ความชื้นในดินและสภาพอากาศ) และส่งข้อมูลแบบ Real-time เข้าสู่ Firebase ระบบนี้ช่วยให้ผู้ใช้งานสามารถมอนิเตอร์และสั่งการระบบรดน้ำและปุ๋ยผ่านแอปพลิเคชันบนสมาร์ทโฟนได้จากทุกที่",
+      "features": [
+        "Real-time Data Streaming ผ่าน Firebase",
+        "ระบบสั่งการอัตโนมัติ (Automated Control Logic) บนชิป ESP32",
+        "Cross-platform Mobile Application พัฒนาด้วย Flutter",
+        "การออกแบบ Hardware Calibration สำหรับเซ็นเซอร์การเกษตร"
+      ]
     },
     {
       "id": "proj2",
       "title": "MES Real-time Dashboard",
-      "description": "Manufacturing Execution System dashboard built with ASP.NET Core and SQL Server, giving floor managers live visibility into WIP, traceability, defect analysis, and anomaly detection.",
+      "description": "Manufacturing Execution System dashboard built with ASP.NET Core and SQL Server, giving floor managers live visibility into WIP, traceability, and defect analysis.",
       "tags": ["C#", "ASP.NET Core", "SQL Server", "Real-time"],
       "githubUrl": "#",
-      "liveUrl": null
+      "liveUrl": null,
+      "image": "/images/mes-dashboard.jpg",
+      "longDescription": "ในอุตสาหกรรมการผลิต 'ข้อมูลที่ล่าช้า' คือต้นทุนที่มองไม่เห็น โปรเจกต์นี้คือการสร้างศูนย์กลางการตัดสินใจ (Command Center) สำหรับผู้บริหารและหัวหน้างานโรงงาน โดยดึงข้อมูลมหาศาลจากระบบ MES และ ERP มาประมวลผลและแสดงเป็นภาพกราฟิกแบบ Real-time ระบบนี้ช่วยเปลี่ยนการรายงานผลประจำวันที่ล่าช้า ให้กลายเป็นการมอนิเตอร์สถานะการผลิต ค้นหาคอขวด (Bottleneck) และวิเคราะห์อัตราของเสีย (Defect Rate) ได้แบบวินาทีต่อวินาที",
+      "features": [
+        "สถาปัตยกรรม Backend พัฒนาด้วย ASP.NET Core API",
+        "Optimized SQL Queries สำหรับการดึงข้อมูล Real-time",
+        "ระบบ Live Anomaly Detection แจ้งเตือนความผิดปกติของสายการผลิต",
+        "UI/UX ออกแบบเพื่อรองรับข้อมูลจำนวนมาก (Data-heavy Dashboard)"
+      ]
     },
     {
       "id": "proj3",
@@ -121,23 +137,47 @@
       "description": "Automated import/export document pipeline using N8N, Google Cloud Document AI, and Gemini AI. Cut manual data entry time from hours down to under 10 minutes.",
       "tags": ["N8N", "Google Cloud Document AI", "Gemini AI", "Automation"],
       "githubUrl": "#",
-      "liveUrl": null
+      "liveUrl": null,
+      "image": "/images/doc-automation.jpg",
+      "longDescription": "นี่คือหนึ่งในโปรเจกต์ที่ผมภูมิใจนำเสนอในการนำ AI มาสร้าง Impact เชิงธุรกิจอย่างแท้จริง เดิมทีกระบวนการจัดการเอกสาร Import/Export ต้องใช้พนักงานคีย์ข้อมูลด้วยมือ (Manual Entry) ซึ่งใช้เวลานานและเสี่ยงต่อความผิดพลาด ผมจึงออกแบบ Pipeline อัตโนมัติขึ้นมาใหม่ โดยใช้ N8N เป็น Workflow Orchestrator ส่งเอกสารไปให้ Google Cloud Document AI ทำการ Extract ข้อมูล และใช้ Gemini AI ในการทำ Data Transformation ผลลัพธ์คือการลดเวลาทำงานจาก 'หลายชั่วโมง' เหลือเพียง 'ไม่กี่นาที' ประหยัด Man-hours ให้องค์กรได้อย่างมหาศาล",
+      "features": [
+        "Workflow Automation Architecture (N8N)",
+        "OCR & Document Parsing (Google Cloud Document AI)",
+        "Prompt Engineering & Data Formatting (Gemini AI)",
+        "ลดเวลา Manual Data Entry ได้มากกว่า 90%"
+      ]
     },
     {
       "id": "proj4",
       "title": "ERP Auto-Form Web App",
-      "description": "A .NET Core + Blazor web app that auto-populates Material Receipt and Warehouse Transfer forms by pulling data directly from the ERP system zero manual entry required.",
+      "description": "A .NET Core + Blazor web app that auto-populates Material Receipt and Warehouse Transfer forms by pulling data directly from the ERP system.",
       "tags": [".NET Core", "Blazor", "ERP Integration", "C#"],
       "githubUrl": "#",
-      "liveUrl": null
+      "liveUrl": null,
+      "image": "/images/erp-form.jpg",
+      "longDescription": "แอปพลิเคชันสำหรับใช้งานภายในองค์กร (Internal Tool) ที่ออกแบบมาเพื่อปิดช่องโหว่ของความล่าช้าในการทำเอกสารโอนย้ายคลังสินค้าและรับวัตถุดิบ ผมพัฒนาแอปพลิเคชันนี้ด้วยสถาปัตยกรรม .NET Core คู่กับ Blazor WebAssembly เพื่อให้ทำงานได้อย่างรวดเร็วบนเบราว์เซอร์ โดยระบบจะเชื่อมต่อตรงกับฐานข้อมูล ERP เพื่อดึงข้อมูลสินค้ามาเติมลงในฟอร์ม (Auto-populate) โดยที่พนักงานไม่ต้องพิมพ์ข้อมูลซ้ำซ้อน ลด Human Error ไปจนเหลือศูนย์",
+      "features": [
+        "Frontend พัฒนาด้วย Blazor WebAssembly (C# in Browser)",
+        "Seamless ERP Database Integration",
+        "ระบบ Auto-populate Form Data อัจฉริยะ",
+        "ระบบออกรายงานและ Export เป็น PDF"
+      ]
     },
     {
       "id": "proj5",
       "title": "Modern Dev Portfolio",
       "description": "A minimal, pixel-art themed personal portfolio built with Next.js App Router, TypeScript, and Tailwind CSS with smooth animations powered by Anime.js.",
       "tags": ["Next.js", "Tailwind CSS", "TypeScript", "Anime.js"],
-      "githubUrl": "#",
-      "liveUrl": "#"
+      "githubUrl": "https://github.com/Kittanate-Th/profile.git",
+      "liveUrl": "#",
+      "image": "/images/portfolio.jpg",
+      "longDescription": "โปรเจกต์นี้คือเว็บไซต์ที่คุณกำลังเปิดดูอยู่ครับ! ผมสร้างพื้นที่นี้ขึ้นมาไม่ใช่แค่เพื่อเป็น Online Resume แต่ตั้งใจให้เป็น 'Showcase' ที่แสดงศักยภาพทางด้าน Frontend Architecture ของผม สถาปัตยกรรมของเว็บถูกออกแบบให้แยกส่วน Data (JSON) ออกจากส่วนประกอบ UI อย่างชัดเจน พร้อมทั้งดึงเทคนิคระดับสูงเช่น การใช้ HTML5 Canvas เพื่อทำแอนิเมชันแบ็คกราวด์แบบ 60FPS และการสร้าง Interactive Mascot ดักจับ Event บนหน้าจอ เพื่อมอบประสบการณ์ที่ลื่นไหลและน่าประทับใจที่สุด",
+      "features": [
+        "Server-Side Rendering (SSR) ด้วย Next.js 16 App Router",
+        "Hardware-Accelerated Canvas Background & Parallax",
+        "Advanced DOM Manipulation & Custom Event Dispatching",
+        "Data-Driven Rendering Architecture"
+      ]
     }
   ],
   "contact": {
