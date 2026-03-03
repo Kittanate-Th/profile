@@ -75,6 +75,7 @@ Simply open src/data/data.json and modify the objects. The UI will automatically
 ### 📬 Contact
 ```text
 I'm currently open to new opportunities! Feel free to reach out:
-LinkedIn: [[https://www.linkedin.com/in/kittanate-thanee-674b092b3/]]
-Email: [[kittanate.th@gmail.com]]
+
+- **LinkedIn:** [Kittanate Thanee](https://www.linkedin.com/in/kittanate-thanee-674b092b3/)
+- **Email:** [kittanate.th@gmail.com](mailto:kittanate.th@gmail.com)
 ```
